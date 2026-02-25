@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>DBZ BT3 Selector Ultimate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="tv-screen">
+        
+        <div class="game-bg">
+            <div class="bg-gradient"></div>
+            <div class="grid-floor"></div>
+            
+            <div id="particles-container" class="particles-container"></div>
+            
+            <div class="atmosphere-layer"></div>
+        </div>
+
+        <div class="ui-layer">
+            
+            <div class="hud-bar top-bar">
+                <div class="player-badge p1-badge">
+                    <span class="p-text">1P</span>
+                </div>
+                <div class="rail-wrapper">
+                    <div class="icon-strip" id="p1-strip">
+                        </div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                
+                <div class="left-panel">
+                    <div class="render-area">
+                        <img id="main-render" src="" alt="Character">
+                    </div>
+                    
+                    <div class="name-plate-wrapper">
+                        <div class="name-plate main-plate">
+                            <div class="plate-glass"></div>
+                            <span id="char-name-main" class="plate-text">GOKU</span>
+                        </div>
+                        
+                        <div class="name-plate sub-plate">
+                            <div class="plate-glass"></div>
+                            <span id="char-name-sub" class="plate-text sub-text">NORMAL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div class="info-header">DATOS DEL PERSONAJE</div>
+                    
+                    <div class="stat-row">
+                        <span class="stat-label">ATK</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="stat-atk"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">DEF</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="stat-def"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">SPD</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="stat-spd"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">KI</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="stat-ki"></div></div>
+                    </div>
+
+                    <div class="bio-box">
+                        <p id="char-bio">...</p>
+                    </div>
+
+                    <div class="forms-list-container">
+                        <div class="info-sub-header">FORMAS / TRANSF.</div>
+                        <ul id="forms-list" class="forms-list"></ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hud-bar bottom-bar">
+                <div class="helper-text" id="helper-text">CARGANDO...</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

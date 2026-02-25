@@ -1,0 +1,367 @@
+// --- VARIABLES GLOBALES ---
+const STATE_CHARACTERS = 'characters';
+const STATE_TRANSFORMATIONS = 'transformations';
+
+let currentState = STATE_CHARACTERS;
+let characterGrid = [];
+let rowIndex = 0;
+let charIndex = 0;
+let transIndex = 0;
+
+let isEnteringTransformations = false;
+let isTransitioning = false; 
+
+// --- SISTEMA DE AUDIO (ARCHIVOS .WAV) ---
+const sfxMove = new Audio('audio/move.wav');     
+const sfxRow = new Audio('audio/row.wav');       
+const sfxSelect = new Audio('audio/select.wav'); 
+const sfxCancel = new Audio('audio/cancel.wav'); 
+
+// --- AJUSTE DE VOLUMEN (Más bajo) ---
+// Rango: 0.0 (Mute) a 1.0 (Máximo)
+sfxMove.volume = 0.02;    // Antes 0.5 (Movimiento lateral)
+sfxRow.volume = 0.02;     // Antes 0.5 (Cambio de fila)
+sfxSelect.volume = 0.03;  // Antes 0.8 (Confirmar - un poco más alto para destacar)
+sfxCancel.volume = 0.02;  // Antes 0.6 (Cancelar)
+
+function playSound(type) {
+    let sound;
+    switch (type) {
+        case 'move': sound = sfxMove; break;
+        case 'row': sound = sfxRow; break;
+        case 'select': sound = sfxSelect; break;
+        case 'cancel': sound = sfxCancel; break;
+        default: return;
+    }
+    
+    sound.currentTime = 0;
+    sound.play().catch(e => console.warn("Audio bloqueado o archivo no encontrado:", e));
+}
+
+// --- REFERENCIAS AL DOM ---
+const strip = document.getElementById('p1-strip');
+const renderImg = document.getElementById('main-render');
+const nameMain = document.getElementById('char-name-main');
+const nameSub = document.getElementById('char-name-sub');
+const helperText = document.getElementById('helper-text');
+const statAtk = document.getElementById('stat-atk');
+const statDef = document.getElementById('stat-def');
+const statSpd = document.getElementById('stat-spd');
+const statKi = document.getElementById('stat-ki');
+const bioText = document.getElementById('char-bio');
+const formsList = document.getElementById('forms-list');
+
+// --- SISTEMA DE PARTÍCULAS ---
+function createParticles() {
+    const container = document.getElementById('particles-container');
+    if (!container) return;
+    
+    const particleCount = 80; 
+
+    for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        
+        const size = Math.random() * 5 + 2 + 'px'; 
+        const left = Math.random() * 100 + '%'; 
+        const duration = Math.random() * 10 + 5 + 's'; 
+        const delay = Math.random() * 10 + 's'; 
+        const opacity = Math.random() * 0.5 + 0.3; 
+
+        p.style.width = size;
+        p.style.height = size;
+        p.style.left = left;
+        p.style.animationDuration = duration;
+        p.style.animationDelay = '-' + delay; 
+        p.style.opacity = opacity;
+
+        container.appendChild(p);
+    }
+}
+
+// --- INICIALIZACIÓN ---
+async function initGame() {
+    createParticles();
+    
+    try {
+        helperText.innerText = "CARGANDO DATOS...";
+        const response = await fetch('./characters.json');
+        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        characterGrid = await response.json();
+        
+        renderBar();
+        updateHelper();
+    } catch (error) {
+        console.error(error);
+        helperText.innerText = "ERROR JSON: Abre esto con Live Server";
+        helperText.style.color = "red";
+    }
+}
+
+// --- RENDER BARRA ---
+function renderBar() {
+    if (characterGrid.length === 0) return;
+
+    strip.innerHTML = '';
+    let itemsToRender = [];
+    let activeIndex = 0;
+
+    if (currentState === STATE_CHARACTERS) {
+        itemsToRender = characterGrid[rowIndex];
+        activeIndex = charIndex;
+    } else {
+        const baseChar = characterGrid[rowIndex][charIndex];
+        const baseAsTrans = { 
+            ...baseChar, 
+            form: baseChar.form || "Normal", 
+            isBase: true 
+        };
+        itemsToRender = [baseAsTrans, ...(baseChar.transformations || [])];
+        activeIndex = transIndex;
+    }
+
+    itemsToRender.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'char-icon';
+        if (index === activeIndex) div.classList.add('active');
+
+        if (currentState === STATE_TRANSFORMATIONS && isEnteringTransformations) {
+            div.classList.add('icon-entering');
+            div.style.animationDelay = `${index * 0.05}s`; 
+        }
+
+        const img = document.createElement('img');
+        img.src = item.portrait;
+        div.appendChild(img);
+
+        const selectorDiv = document.createElement('div');
+        selectorDiv.className = 'selector-border';
+        div.appendChild(selectorDiv);
+        
+        if (currentState === STATE_CHARACTERS && item.transformations && item.transformations.length > 0) {
+            const ind = document.createElement('div');
+            ind.className = 'transform-indicator';
+            div.appendChild(ind);
+        }
+
+        strip.appendChild(div);
+    });
+
+    if (currentState === STATE_TRANSFORMATIONS) isEnteringTransformations = false;
+
+    if (!isTransitioning) {
+        const activeElement = strip.children[activeIndex];
+        if (activeElement) {
+            activeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
+
+    updateInfo(itemsToRender[activeIndex]);
+    updateHelper();
+}
+
+// --- CAMBIO DE FILA ---
+function changeRow(direction) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    playSound('row'); 
+
+    strip.classList.add('row-moving');
+    const outClass = direction === 1 ? 'slide-out-up' : 'slide-out-down';
+    strip.classList.add(outClass);
+
+    setTimeout(() => {
+        rowIndex = (rowIndex + direction + characterGrid.length) % characterGrid.length;
+        charIndex = 0;
+        
+        strip.classList.remove(outClass);
+        const inClass = direction === 1 ? 'slide-in-up' : 'slide-in-down';
+        strip.classList.add(inClass);
+        
+        renderBar();
+
+        setTimeout(() => {
+            strip.classList.remove(inClass);
+            strip.classList.remove('row-moving');
+            isTransitioning = false;
+        }, 200);
+
+    }, 200);
+}
+
+// --- SALIDA TRANSFORMACIONES ---
+function triggerExitAnimation() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    playSound('cancel');
+
+    const icons = document.querySelectorAll('.char-icon');
+    const totalIcons = icons.length;
+    let maxDelay = 0;
+
+    icons.forEach((icon, index) => {
+        icon.classList.remove('icon-entering');
+        icon.classList.add('icon-exiting');
+        const reverseIndex = totalIcons - 1 - index;
+        const delay = reverseIndex * 0.04; 
+        icon.style.animationDelay = `${delay}s`;
+        if (delay > maxDelay) maxDelay = delay;
+    });
+
+    const totalTime = 250 + (maxDelay * 1000);
+
+    setTimeout(() => {
+        currentState = STATE_CHARACTERS;
+        renderBar();
+        isTransitioning = false;
+    }, totalTime);
+}
+
+// --- INFO UPDATE ---
+function updateInfo(data) {
+    if (!data) return;
+    
+    renderImg.style.opacity = 0;
+    renderImg.style.transform = "translateX(-2vw)";
+    
+    setTimeout(() => {
+        renderImg.src = data.render;
+        renderImg.style.opacity = 1;
+        renderImg.style.transform = "translateX(0)";
+        
+        nameMain.innerText = data.name ? data.name.toUpperCase() : "DESCONOCIDO";
+        const formName = data.form ? data.form.toUpperCase() : "NORMAL";
+        nameSub.innerText = formName;
+
+        if (formName === "NORMAL") {
+            nameSub.style.color = "#aaa";
+        } else {
+            nameSub.style.color = "#ffff00";
+        }
+        
+    }, 50);
+
+    if (data.stats) {
+        statAtk.style.width = data.stats.atk + '%';
+        statDef.style.width = data.stats.def + '%';
+        statSpd.style.width = data.stats.spd + '%';
+        statKi.style.width = data.stats.ki + '%';
+    } else {
+        [statAtk, statDef, statSpd, statKi].forEach(el => el.style.width = '0%');
+    }
+
+    bioText.innerText = data.bio || "Información no disponible.";
+    updateFormsList(data.form || "Normal");
+}
+
+function updateFormsList(currentFormName) {
+    formsList.innerHTML = '';
+    const baseChar = characterGrid[rowIndex][charIndex];
+    const baseEntry = { form: baseChar.form || "Normal" };
+    const allForms = [baseEntry, ...(baseChar.transformations || [])];
+
+    allForms.forEach(item => {
+        const li = document.createElement('li');
+        const displayText = item.form || item.name || "Normal";
+        li.innerText = displayText;
+        if (displayText.toUpperCase() === currentFormName.toUpperCase()) {
+            li.style.color = "#ffff00";
+            li.style.textShadow = "0 0 5px #ffff00";
+        }
+        formsList.appendChild(li);
+    });
+}
+
+function updateHelper() {
+    if (characterGrid.length === 0) return;
+    if (currentState === STATE_CHARACTERS) {
+        helperText.innerText = `FILA ${rowIndex + 1} - ENTER: ELEGIR / TRANSFORMAR`;
+    } else {
+        helperText.innerText = `SELECCIONANDO FORMA - X: VOLVER`;
+    }
+}
+
+// --- INPUTS ---
+document.addEventListener('keydown', (e) => {
+    if (characterGrid.length === 0 || isTransitioning) return;
+
+    // DERECHA
+    if (e.key === 'ArrowRight') {
+        playSound('move');
+        if (currentState === STATE_CHARACTERS) {
+            charIndex = (charIndex + 1) % characterGrid[rowIndex].length;
+        } else {
+            const baseChar = characterGrid[rowIndex][charIndex];
+            const total = (baseChar.transformations?.length || 0) + 1;
+            transIndex = (transIndex + 1) % total;
+        }
+        renderBar();
+    } 
+    // IZQUIERDA
+    else if (e.key === 'ArrowLeft') {
+        playSound('move');
+        if (currentState === STATE_CHARACTERS) {
+            const len = characterGrid[rowIndex].length;
+            charIndex = (charIndex - 1 + len) % len;
+        } else {
+            const baseChar = characterGrid[rowIndex][charIndex];
+            const total = (baseChar.transformations?.length || 0) + 1;
+            transIndex = (transIndex - 1 + total) % total;
+        }
+        renderBar();
+    }
+    // ARRIBA / ABAJO
+    else if (currentState === STATE_CHARACTERS && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+        const direction = e.key === 'ArrowDown' ? 1 : -1;
+        changeRow(direction);
+    }
+    // ENTER / Z
+    else if (e.key === 'Enter' || e.key.toLowerCase() === 'z') {
+        if (currentState === STATE_CHARACTERS) {
+            const char = characterGrid[rowIndex][charIndex];
+            if (char.transformations && char.transformations.length > 0) {
+                playSound('select');
+                currentState = STATE_TRANSFORMATIONS;
+                transIndex = 0;
+                isEnteringTransformations = true;
+                renderBar();
+            } else {
+                confirmSelection(char.name, char.form || "Normal");
+            }
+        } else {
+            const base = characterGrid[rowIndex][charIndex];
+            let selectedItem;
+            if (transIndex === 0) {
+                selectedItem = base;
+            } else {
+                selectedItem = base.transformations[transIndex - 1];
+            }
+            confirmSelection(selectedItem.name, selectedItem.form);
+        }
+    }
+    // BACKSPACE / X
+    else if (e.key === 'Backspace' || e.key.toLowerCase() === 'x') {
+        if (currentState === STATE_TRANSFORMATIONS) {
+            triggerExitAnimation();
+        }
+    }
+});
+
+function confirmSelection(name, form) {
+    playSound('select');
+    
+    nameMain.style.color = "#ffff00";
+    nameMain.style.textShadow = "0 0 20px #ff0000"; 
+    nameSub.style.color = "#fff";
+    
+    console.log(`SELECCIONADO: ${name} (${form || 'Normal'})`);
+    
+    setTimeout(() => {
+        nameMain.style.color = "#fff";
+        nameMain.style.textShadow = "2px 2px 0 #000";
+    }, 500);
+}
+
+initGame();
