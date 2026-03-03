@@ -29,16 +29,15 @@
         }
       ]
     },
-      {
+    {
       "id": "gohan_kid",
       "name": "Gohan (Kid)",
       "form": " ",
       "portrait": "images/gohan_kid/33.webp",
       "render": "images/gohan_kid/gohan.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku al inicio de la Saga Saiyan. Aún no conoce sus verdaderos orígenes."
+      "bio": "Hijo de Goku. Tiene un poder oculto impulsado por la ira."
     },
-         
     {
       "id": "piccolo",
       "name": "Piccolo (Early)",
@@ -46,9 +45,8 @@
       "portrait": "images/piccolo/44.webp",
       "render": "images/piccolo/20_PICCOLO.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku al inicio de la Saga Saiyan. Aún no conoce sus verdaderos orígenes."
+      "bio": "Guerrero Namekiano. Antiguo enemigo convertido en aliado."
     },
-
     {
       "id": "krillin",
       "name": "Krillin",
@@ -56,16 +54,16 @@
       "portrait": "images/krillin/47.webp",
       "render": "images/krillin/23_KRILLIN.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku al inicio de la Saga Saiyan. Aún no conoce sus verdaderos orígenes."
+      "bio": "El mejor amigo de Goku y uno de los humanos más fuertes."
     },
-      {
+    {
       "id": "yamcha",
       "name": "Yamcha",
       "form": " ",
       "portrait": "images/yamcha/48.webp",
       "render": "images/yamcha/24_YAMCHA.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku al inicio de la Saga Saiyan. Aún no conoce sus verdaderos orígenes."
+      "bio": "Luchador del desierto y experto en la técnica del Colmillo de Lobo."
     },
     {
       "id": "trunks_future",
@@ -74,7 +72,7 @@
       "portrait": "images/trunks_future/50.webp",
       "render": "images/trunks_future/26_TRUNKS_29.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku durante la saga de Namek y los Androides.",
+      "bio": "Viajero del tiempo que viene a advertir sobre los Androides.",
       "transformations": [
         {
           "id": "trunks_future_ss",
@@ -83,12 +81,11 @@
           "portrait": "images/trunks_future/51.webp",
           "render": "images/trunks_future/ss.webp",
           "stats": { "atk": 85, "def": 40, "spd": 90, "ki": 70 },
-          "bio": "El guerrero legendario despertado por la ira."
+          "bio": "El guerrero legendario despertado por la pérdida de su maestro."
         }
       ]
     }
   ],
-
   [
     {
       "id": "goku_mid",
@@ -106,7 +103,7 @@
           "portrait": "images/goku_z_mid/03.webp",
           "render": "images/goku_z_mid/goku_mid_ssj.webp",
           "stats": { "atk": 85, "def": 40, "spd": 90, "ki": 70 },
-          "bio": "El guerrero legendario despertado por la ira."
+          "bio": "El guerrero legendario despertado por la ira en Namek."
         }
       ]
     },
@@ -146,7 +143,7 @@
       "portrait": "images/gohan_teen/34.webp",
       "render": "images/gohan_teen/gohan.webp",
       "stats": { "atk": 70, "def": 60, "spd": 65, "ki": 60 },
-      "bio": "Vegeta buscando superar a Kakarotto.",
+      "bio": "Gohan tras su entrenamiento en la Habitación del Tiempo.",
       "transformations": [
         {
           "id": "gohan_teen_ss",
@@ -155,7 +152,7 @@
           "portrait": "images/gohan_teen/35.webp",
           "render": "images/gohan_teen/gohan_ss.webp",
           "stats": { "atk": 88, "def": 70, "spd": 85, "ki": 80 },
-          "bio": "Vegeta finalmente despierta el poder del Super Saiyan."
+          "bio": "Domina el estado Super Saiyan."
         },
         {
           "id": "gohan_teen_ss2",
@@ -164,45 +161,45 @@
           "portrait": "images/gohan_teen/36.webp",
           "render": "images/gohan_teen/gohan_ss2.webp",
           "stats": { "atk": 95, "def": 80, "spd": 60, "ki": 90 },
-          "bio": "Una forma que sacrifica velocidad por fuerza bruta."
+          "bio": "El primer guerrero en alcanzar esta fase."
         }
       ]
     },
-  {
+    {
       "id": "piccolo_kami",
       "name": "Piccolo (End)",
       "form": " ",
       "portrait": "images/piccolo_kami/45.webp",
       "render": "images/piccolo_kami/21_PICCOLO_29.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku al inicio de la Saga Saiyan. Aún no conoce sus verdaderos orígenes."
-    },  
-     {
+      "bio": "Piccolo fusionado con Kami-sama."
+    },
+    {
       "id": "tien",
       "name": "Tien",
       "form": " ",
       "portrait": "images/tien/49.webp",
       "render": "images/tien/25_TIEN.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku al inicio de la Saga Saiyan. Aún no conoce sus verdaderos orígenes."
+      "bio": "Artista marcial disciplinado y creador del Kikohu."
     },
-       {
+    {
       "id": "chiaotzu",
       "name": "Chiaotzu",
       "form": " ",
       "portrait": "images/chiaotzu/95.webp",
       "render": "images/chiaotzu/49_CHIAOTZU.webp",
       "stats": { "atk": 60, "def": 50, "spd": 60, "ki": 50 },
-      "bio": "Goku al inicio de la Saga Saiyan. Aún no conoce sus verdaderos orígenes."
+      "bio": "Acompañante inseparable de Tien con poderes psíquicos."
     },
-     {
+    {
       "id": "trunks_melee",
       "name": "Trunks (Melee)",
       "form": " ",
       "portrait": "images/trunks_melee/52.webp",
       "render": "images/trunks_melee/trunks_melee.webp",
       "stats": { "atk": 70, "def": 60, "spd": 65, "ki": 60 },
-      "bio": "Vegeta buscando superar a Kakarotto.",
+      "bio": "Trunks con el pelo largo tras entrenar con Vegeta.",
       "transformations": [
         {
           "id": "trunks_melee_ss",
@@ -211,7 +208,7 @@
           "portrait": "images/trunks_melee/53.webp",
           "render": "images/trunks_melee/trunks_melee_ss.webp",
           "stats": { "atk": 88, "def": 70, "spd": 85, "ki": 80 },
-          "bio": "Vegeta finalmente despierta el poder del Super Saiyan."
+          "bio": "Poder aumentado tras el entrenamiento."
         },
         {
           "id": "super_trunks",
@@ -220,7 +217,7 @@
           "portrait": "images/trunks_melee/54.webp",
           "render": "images/trunks_melee/super_trunks.webp",
           "stats": { "atk": 95, "def": 80, "spd": 60, "ki": 90 },
-          "bio": "Una forma que sacrifica velocidad por fuerza bruta."
+          "bio": "Una forma que sacrifica velocidad por fuerza bruta extrema."
         }
       ]
     }
@@ -318,16 +315,16 @@
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
           "bio": "Poder que supera los límites."
         },
-          {
-      "id": "majin_vegeta",
-      "name": "Majin Vegeta",
-      "form": " ",
-      "portrait": "images/majin_vegeta/27.webp",
-      "render": "images/majin_vegeta/majin_vegeta.webp",
-      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
-      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
-      "transformations": []
-    },
+        {
+          "id": "majin_vegeta",
+          "name": "Majin Vegeta",
+          "form": " ",
+          "portrait": "images/majin_vegeta/27.webp",
+          "render": "images/majin_vegeta/majin_vegeta.webp",
+          "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
+          "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+          "transformations": []
+        },
         {
           "id": "vegito_v",
           "name": "Vegito",
@@ -357,7 +354,6 @@
         }
       ]
     },
-
     {
       "id": "gohan_adult",
       "name": "Gohan (Adult)",
@@ -365,7 +361,7 @@
       "portrait": "images/gohan_adult/37.webp",
       "render": "images/gohan_adult/gohan.webp",
       "stats": { "atk": 70, "def": 60, "spd": 70, "ki": 60 },
-      "bio": "Vegeta durante la saga de Buu.",
+      "bio": "Gohan en la preparatoria.",
       "transformations": [
         {
           "id": "gohan_adult_ss",
@@ -384,7 +380,7 @@
           "render": "images/gohan_adult/gohan_ss2.webp",
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
           "bio": "Poder que supera los límites."
-        }, 
+        },
         {
           "id": "gohan_ultimate",
           "name": "Ultimate Gohan",
@@ -392,7 +388,7 @@
           "portrait": "images/gohan_adult/41.webp",
           "render": "images/gohan_adult/gohan_ultimate.webp",
           "stats": { "atk": 85, "def": 65, "spd": 85, "ki": 75 },
-          "bio": "Poder Saiyan estándar."
+          "bio": "Poder desbloqueado por el Anciano Kaioshin."
         },
         {
           "id": "great_saiyaman",
@@ -401,27 +397,28 @@
           "portrait": "images/gohan_adult/40.webp",
           "render": "images/gohan_adult/great_saiyaman.webp",
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
-          "bio": "Poder que supera los límites."
-        }]
+          "bio": "El héroe de la justicia."
+        }
+      ]
     },
-          {
+    {
       "id": "videl",
       "name": "Videl",
       "form": " ",
-      "portrait": "",
-      "render": "",
-      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
-      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "portrait": "images/videl/videl.webp",
+      "render": "images/videl/videl_render.webp",
+      "stats": { "atk": 40, "def": 45, "spd": 50, "ki": 30 },
+      "bio": "Hija de Mr. Satan y aprendiz de artes marciales.",
       "transformations": []
     },
-             {
+    {
       "id": "mr_satan",
       "name": "Mr. Satan",
       "form": " ",
-      "portrait": "",
-      "render": "",
-      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
-      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "portrait": "images/satan/satan.webp",
+      "render": "images/satan/satan_render.webp",
+      "stats": { "atk": 20, "def": 30, "spd": 25, "ki": 10 },
+      "bio": "El campeón del mundo (y salvador de la Tierra).",
       "transformations": []
     },
     {
@@ -431,7 +428,7 @@
       "portrait": "images/goten/59.webp",
       "render": "images/goten/30_GOTEN.webp",
       "stats": { "atk": 70, "def": 60, "spd": 70, "ki": 60 },
-      "bio": "Vegeta durante la saga de Buu.",
+      "bio": "El segundo hijo de Goku.",
       "transformations": [
         {
           "id": "goten_ss",
@@ -443,16 +440,16 @@
           "bio": "Poder Saiyan estándar."
         },
         {
-          "id": "gotenks",
+          "id": "gotenks_g",
           "name": "Gotenks",
-          "form": "  ",
+          "form": " ",
           "portrait": "images/goten/69.webp",
           "render": "images/goten/35_GOTENKS.webp",
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
-          "bio": "Poder que supera los límites."
-        }, 
+          "bio": "Fusión de Goten y Trunks."
+        },
         {
-          "id": "gotenks_ss",
+          "id": "gotenks_ss_g",
           "name": "Gotenks",
           "form": "Super Saiyan",
           "portrait": "images/goten/70.webp",
@@ -461,14 +458,15 @@
           "bio": "Poder Saiyan estándar."
         },
         {
-          "id": "gotenks_ss3",
+          "id": "gotenks_ss3_g",
           "name": "Gotenks",
           "form": "Super Saiyan 3",
           "portrait": "images/goten/71.webp",
           "render": "images/goten/353F_GOTENKS_Super_Saiyan_3.webp",
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
           "bio": "Poder que supera los límites."
-        }]
+        }
+      ]
     },
     {
       "id": "trunks_kid",
@@ -477,7 +475,7 @@
       "portrait": "images/trunks_kid/57.webp",
       "render": "images/trunks_kid/29_TRUNKS_29.webp",
       "stats": { "atk": 70, "def": 60, "spd": 70, "ki": 60 },
-      "bio": "Vegeta durante la saga de Buu.",
+      "bio": "Hijo de Vegeta.",
       "transformations": [
         {
           "id": "trunks_kid_ss",
@@ -491,12 +489,12 @@
         {
           "id": "gotenks",
           "name": "Gotenks",
-          "form": "  ",
+          "form": " ",
           "portrait": "images/goten/69.webp",
           "render": "images/goten/35_GOTENKS.webp",
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
-          "bio": "Poder que supera los límites."
-        }, 
+          "bio": "Fusión de Goten y Trunks."
+        },
         {
           "id": "gotenks_ss",
           "name": "Gotenks",
@@ -514,7 +512,8 @@
           "render": "images/goten/353F_GOTENKS_Super_Saiyan_3.webp",
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
           "bio": "Poder que supera los límites."
-        }]
+        }
+      ]
     }
   ],
   [
@@ -619,7 +618,6 @@
         }
       ]
     },
-   
     {
       "id": "vegeta_super",
       "name": "Vegeta (Super)",
@@ -702,14 +700,15 @@
           "bio": "Gogeta Blue."
         }
       ]
-    }, {
+    },
+    {
       "id": "gohan_super",
       "name": "Gohan (Super)",
       "form": " ",
       "portrait": "images/gohan_super/183.webp",
       "render": "images/gohan_super/gohan.webp",
       "stats": { "atk": 65, "def": 55, "spd": 70, "ki": 60 },
-      "bio": "Goku convertido en niño.",
+      "bio": "Gohan de regreso a la batalla.",
       "transformations": [
         {
           "id": "gohan_super_ss",
@@ -718,7 +717,7 @@
           "portrait": "images/gohan_super/184.webp",
           "render": "images/gohan_super/gohan_ss.webp",
           "stats": { "atk": 80, "def": 65, "spd": 85, "ki": 75 },
-          "bio": "Super Saiyan versión GT."
+          "bio": "Super Saiyan recuperado."
         },
         {
           "id": "gohan_super_ultimate",
@@ -727,7 +726,7 @@
           "portrait": "images/gohan_super/185.webp",
           "render": "images/gohan_super/gohan_ultimate.webp",
           "stats": { "atk": 90, "def": 60, "spd": 90, "ki": 85 },
-          "bio": "Difícil de controlar en cuerpo de niño."
+          "bio": "Potencial místico restaurado."
         },
         {
           "id": "gohan_super_beast",
@@ -736,7 +735,7 @@
           "portrait": "images/gohan_super/186.webp",
           "render": "images/gohan_super/gohan_beast.webp",
           "stats": { "atk": 98, "def": 95, "spd": 95, "ki": 95 },
-          "bio": "La forma definitiva del Super Saiyan primitivo."
+          "bio": "La forma definitiva desatada por la furia."
         }
       ]
     },
@@ -747,7 +746,7 @@
       "portrait": "images/piccolo_super/187.webp",
       "render": "images/piccolo_super/111_PICCOLO_(SUPER_HERO).webp",
       "stats": { "atk": 65, "def": 55, "spd": 70, "ki": 60 },
-      "bio": "Goku convertido en niño.",
+      "bio": "Piccolo protegiendo a la Tierra.",
       "transformations": [
         {
           "id": "piccolo_super_pa",
@@ -756,7 +755,7 @@
           "portrait": "images/piccolo_super/188.webp",
           "render": "images/piccolo_super/111º_PICCOLO_(SUPER_HERO)_Power_Awakening.webp",
           "stats": { "atk": 80, "def": 65, "spd": 85, "ki": 75 },
-          "bio": "Super Saiyan versión GT."
+          "bio": "Potencial Namekiano despertado."
         },
         {
           "id": "piccolo_orange",
@@ -765,7 +764,7 @@
           "portrait": "images/piccolo_super/189.webp",
           "render": "images/piccolo_super/1113F_ORANGE_PICCOLO.webp",
           "stats": { "atk": 90, "def": 60, "spd": 90, "ki": 85 },
-          "bio": "Difícil de controlar en cuerpo de niño."
+          "bio": "Un poder regalado por Shenron."
         },
         {
           "id": "piccolo_orange_giant",
@@ -774,28 +773,28 @@
           "portrait": "images/piccolo_super/190.webp",
           "render": "images/piccolo_super/1113F3F_ORANGE_PICCOLO_Giant_Form.webp",
           "stats": { "atk": 98, "def": 95, "spd": 95, "ki": 95 },
-          "bio": "La forma definitiva del Super Saiyan primitivo."
+          "bio": "Piccolo gigante con poder divino."
         }
       ]
-    },          
+    },
     {
       "id": "beerus",
       "name": "Beerus",
       "form": " ",
-      "portrait": "",
-      "render": "",
+      "portrait": "images/beerus/beerus.webp",
+      "render": "images/beerus/beerus_render.webp",
       "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
-      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "bio": "Dios de la Destrucción del Universo 7.",
       "transformations": []
     },
-             {
+    {
       "id": "whis",
       "name": "Whis",
       "form": " ",
-      "portrait": "",
-      "render": "",
+      "portrait": "images/whis/whis.webp",
+      "render": "images/whis/whis_render.webp",
       "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
-      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "bio": "Ángel y maestro de Beerus.",
       "transformations": []
     },
     {
@@ -805,7 +804,7 @@
       "portrait": "images/trunks_super/55.webp",
       "render": "images/trunks_super/28_FUTURE_TRUNKS.webp",
       "stats": { "atk": 70, "def": 60, "spd": 65, "ki": 60 },
-      "bio": "Vegeta buscando superar a Kakarotto.",
+      "bio": "Trunks del futuro, regresando por una nueva amenaza.",
       "transformations": [
         {
           "id": "trunks_super_ss",
@@ -814,14 +813,13 @@
           "portrait": "images/trunks_super/56.webp",
           "render": "images/trunks_super/283F_FUTURE_TRUNKS_Super_Saiyan.webp",
           "stats": { "atk": 88, "def": 70, "spd": 85, "ki": 80 },
-          "bio": "Vegeta finalmente despierta el poder del Super Saiyan."
+          "bio": "Poder Saiyan aumentado."
         }
       ]
     }
-    
   ],
   [
-  {
+    {
       "id": "goku_gt",
       "name": "Goku (GT)",
       "form": " ",
@@ -868,17 +866,17 @@
         }
       ]
     },
-  {
+    {
       "id": "vegeta_gt",
       "name": "Vegeta (GT)",
       "form": "Super Saiyan 4",
       "portrait": "images/vegeta_gt/32.webp",
       "render": "images/vegeta_gt/vegeta_ss4.webp",
       "stats": { "atk": 65, "def": 55, "spd": 70, "ki": 60 },
-      "bio": "Goku convertido en niño.",
+      "bio": "Vegeta en fase 4 gracias a la máquina de Bulma.",
       "transformations": [
         {
-          "id": "gogeta_ss4",
+          "id": "gogeta_ss4_v",
           "name": "Gogeta (GT)",
           "form": "Super Saiyan 4",
           "portrait": "images/goku_gt/68.webp",
@@ -887,7 +885,7 @@
           "bio": "Fusión SSJ4 definitiva."
         }
       ]
-    }, 
+    },
     {
       "id": "gohan_future",
       "name": "Gohan (Future)",
@@ -895,7 +893,7 @@
       "portrait": "images/gohan_future/42.webp",
       "render": "images/gohan_future/19_GOHAN_29.webp",
       "stats": { "atk": 70, "def": 60, "spd": 65, "ki": 60 },
-      "bio": "Vegeta buscando superar a Kakarotto.",
+      "bio": "El Gohan del futuro alternativo.",
       "transformations": [
         {
           "id": "gohan_future_ss",
@@ -904,39 +902,39 @@
           "portrait": "images/gohan_future/43.webp",
           "render": "images/gohan_future/1928FUTURE29_Super_Saiyan.webp",
           "stats": { "atk": 88, "def": 70, "spd": 85, "ki": 80 },
-          "bio": "Vegeta finalmente despierta el poder del Super Saiyan."
+          "bio": "Despertado tras la pérdida de sus amigos."
         }
       ]
-    },  
+    },
     {
       "id": "uub",
       "name": "Uub",
       "form": " ",
-      "portrait": "",
-      "render": "",
+      "portrait": "images/uub/uub.webp",
+      "render": "images/uub/uub_render.webp",
       "stats": { "atk": 65, "def": 55, "spd": 70, "ki": 60 },
-      "bio": "Goku convertido en niño.",
+      "bio": "Reencarnación de Majin Buu.",
       "transformations": [
         {
           "id": "majuub",
           "name": "Majuub",
-          "form": "  ",
-          "portrait": "",
-          "render": "",
+          "form": " ",
+          "portrait": "images/uub/majuub.webp",
+          "render": "images/uub/majuub_render.webp",
           "stats": { "atk": 80, "def": 65, "spd": 85, "ki": 75 },
-          "bio": "Super Saiyan versión GT."
-        }]
-      }, 
-      {
+          "bio": "Fusión de Uub y Buu Gordo."
+        }
+      ]
+    },
+    {
       "id": "pan",
       "name": "Pan",
       "form": " ",
-      "portrait": "",
-      "render": "",
-      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
-      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad."
-      
+      "portrait": "images/pan/pan.webp",
+      "render": "images/pan/pan_render.webp",
+      "stats": { "atk": 50, "def": 45, "spd": 60, "ki": 40 },
+      "bio": "Nieta de Goku.",
+      "transformations": []
     }
-      
   ]
 ]
