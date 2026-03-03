@@ -318,6 +318,16 @@
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
           "bio": "Poder que supera los límites."
         },
+          {
+      "id": "majin_vegeta",
+      "name": "Majin Vegeta",
+      "form": " ",
+      "portrait": "images/majin_vegeta/27.webp",
+      "render": "images/majin_vegeta/majin_vegeta.webp",
+      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
+      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "transformations": []
+    },
         {
           "id": "vegito_v",
           "name": "Vegito",
@@ -347,16 +357,7 @@
         }
       ]
     },
-    {
-      "id": "majin_vegeta",
-      "name": "Majin Vegeta",
-      "form": " ",
-      "portrait": "images/majin_vegeta/27.webp",
-      "render": "images/majin_vegeta/majin_vegeta.webp",
-      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
-      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
-      "transformations": []
-    },
+
     {
       "id": "gohan_adult",
       "name": "Gohan (Adult)",
@@ -402,6 +403,26 @@
           "stats": { "atk": 90, "def": 70, "spd": 90, "ki": 85 },
           "bio": "Poder que supera los límites."
         }]
+    },
+          {
+      "id": "videl",
+      "name": "Videl",
+      "form": " ",
+      "portrait": "",
+      "render": "",
+      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
+      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "transformations": []
+    },
+             {
+      "id": "mr_satan",
+      "name": "Mr. Satan",
+      "form": " ",
+      "portrait": "",
+      "render": "",
+      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
+      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "transformations": []
     },
     {
       "id": "goten",
@@ -756,6 +777,26 @@
           "bio": "La forma definitiva del Super Saiyan primitivo."
         }
       ]
+    },          
+    {
+      "id": "beerus",
+      "name": "Beerus",
+      "form": " ",
+      "portrait": "",
+      "render": "",
+      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
+      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "transformations": []
+    },
+             {
+      "id": "whis",
+      "name": "Whis",
+      "form": " ",
+      "portrait": "",
+      "render": "",
+      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
+      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad.",
+      "transformations": []
     },
     {
       "id": "trunks_super",
@@ -866,6 +907,36 @@
           "bio": "Vegeta finalmente despierta el poder del Super Saiyan."
         }
       ]
+    },  
+    {
+      "id": "uub",
+      "name": "Uub",
+      "form": " ",
+      "portrait": "",
+      "render": "",
+      "stats": { "atk": 65, "def": 55, "spd": 70, "ki": 60 },
+      "bio": "Goku convertido en niño.",
+      "transformations": [
+        {
+          "id": "majuub",
+          "name": "Majuub",
+          "form": "  ",
+          "portrait": "",
+          "render": "",
+          "stats": { "atk": 80, "def": 65, "spd": 85, "ki": 75 },
+          "bio": "Super Saiyan versión GT."
+        }]
+      }, 
+      {
+      "id": "pan",
+      "name": "Pan",
+      "form": " ",
+      "portrait": "",
+      "render": "",
+      "stats": { "atk": 92, "def": 85, "spd": 88, "ki": 85 },
+      "bio": "Vegeta bajo el control de Babidi, recuperando su maldad."
+      
     }
+      
   ]
 ]

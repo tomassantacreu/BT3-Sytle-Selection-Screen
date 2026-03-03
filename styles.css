@@ -18,13 +18,11 @@ body {
 /* --- FONDO ANIMADO --- */
 .game-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 
-/* 1. Gradiente Base */
 .bg-gradient {
     position: absolute; inset: 0;
     background: linear-gradient(to top, #000814 0%, #002255 60%, #0055aa 100%);
 }
 
-/* 2. Suelo 3D */
 .grid-floor {
     position: absolute; bottom: -20vh; left: -50%; width: 200%; height: 80vh;
     background-image: 
@@ -37,21 +35,14 @@ body {
     -webkit-mask-image: linear-gradient(to top, black 20%, transparent 100%);
 }
 
-/* 3. Contenedor de Partículas JS */
-.particles-container {
-    position: absolute; inset: 0;
-    pointer-events: none;
-    z-index: 2;
-}
+.particles-container { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
 
-/* Partícula Individual */
 .particle {
     position: absolute; bottom: -10px; border-radius: 50%;
     background: white; box-shadow: 0 0 10px #00ffff, 0 0 20px #0055ff;
     opacity: 0; animation: floatUp linear infinite;
 }
 
-/* 4. Atmósfera Brillante */
 .atmosphere-layer {
     position: absolute; inset: 0;
     background: radial-gradient(circle at center 80%, rgba(100, 200, 255, 0.1) 0%, rgba(0,0,0,0.6) 90%);
@@ -66,156 +57,96 @@ body {
 }
 
 /* --- UI LAYER --- */
-.ui-layer { 
-    position: absolute; inset: 0; z-index: 10; 
-    display: flex; flex-direction: column; padding: 0;
-}
+.ui-layer { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; padding: 0; }
 
 /* --- BARRAS HUD --- */
 .hud-bar {
-    height: 16vh; 
-    width: 100%; display: flex; align-items: center;
-    border-top: 2px solid rgba(255,255,255,0.4); 
-    border-bottom: 2px solid rgba(255,255,255,0.4);
+    height: 16vh; width: 100%; display: flex; align-items: center;
+    border-top: 2px solid rgba(255,255,255,0.4); border-bottom: 2px solid rgba(255,255,255,0.4);
     background: linear-gradient(180deg, rgba(0,10,30,0.8) 0%, rgba(0,30,70,0.8) 50%, rgba(0,10,30,0.8) 100%);
-    box-shadow: 0 0 15px rgba(0, 150, 255, 0.4);
-    z-index: 20; /* UI siempre arriba */
-    position: relative; margin-top: 1vh; overflow: visible; 
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.4); z-index: 20; position: relative; margin-top: 1vh; overflow: visible; 
 }
-.hud-bar::after {
-    content: ""; position: absolute; inset: 0;
-    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
-    pointer-events: none;
-}
+.hud-bar::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px); pointer-events: none; }
 
-.bottom-bar { 
-    margin-top: auto; margin-bottom: 1vh; height: 5vh; 
-    justify-content: center; background: #00081a; border: 2px solid #0055aa; 
-}
+.bottom-bar { margin-top: auto; margin-bottom: 1vh; height: 5vh; justify-content: center; background: #00081a; border: 2px solid #0055aa; }
 
-/* BADGE */
+/* BADGE & RAIL */
 .player-badge {
-    width: 14vh; height: 100%; 
-    background: linear-gradient(135deg, #0044cc, #001133);
+    width: 14vh; height: 100%; background: linear-gradient(135deg, #0044cc, #001133);
     border-right: 3px solid #00ffff; display: flex; justify-content: center; align-items: center;
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-    position: relative; z-index: 25;
-}
-.p-text {
-    font-size: 4vh; font-weight: 900; font-style: italic; color: #fff;
-    text-shadow: 2px 2px 0 #000; font-family: sans-serif;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); position: relative; z-index: 25;
 }
 
-/* RAIL */
-.rail-wrapper { 
-    flex-grow: 1; height: 100%; overflow-x: auto; overflow-y: visible; 
-    display: flex; align-items: center; scrollbar-width: none; position: relative; 
+/* NUEVA CLASE PARA EL LOGO */
+.p-logo {
+    max-width: 75%;
+    max-height: 75%;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
 }
+
+.rail-wrapper { flex-grow: 1; height: 100%; overflow-x: auto; overflow-y: visible; display: flex; align-items: center; scrollbar-width: none; position: relative; }
 .rail-wrapper::-webkit-scrollbar { display: none; }
-.icon-strip { 
-    display: flex; align-items: center; padding-left: 2vw; padding-right: 2vw; 
-    height: 100%; padding-top: 1vh; padding-bottom: 1vh; position: relative; 
-}
+.icon-strip { display: flex; align-items: center; padding: 0 2vw; height: 100%; position: relative; }
 
-/* ICONO */
+/* ICONO PERSONAJE SUPERIOR */
 .char-icon {
-    width: 13vh; height: 13vh; background: #000; flex-shrink: 0; 
-    position: relative; margin: 0 0.5vh; z-index: 1; overflow: visible; 
-    transition: opacity 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    width: 13vh; height: 13vh; background: #000; flex-shrink: 0; position: relative; margin: 0 0.5vh; z-index: 1; overflow: visible; transition: opacity 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.6);
 }
-.char-icon img { 
-    width: 100%; height: 100%; object-fit: cover; object-position: top center; 
-    display: block; opacity: 0.5; border: 2px solid #000; transition: opacity 0.2s;
-}
+.char-icon img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; opacity: 0.5; border: 2px solid #000; transition: opacity 0.2s; }
 .char-icon.active { z-index: 100; }
 .char-icon.active img { opacity: 1; border: none; }
 
-/* SELECTOR (BORDES) */
-@keyframes sharpPulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 3px #ffff00, 0 0 15px #ffff00; }
-    50% { transform: scale(1.05); box-shadow: 0 0 0 3px #ffff00, 0 0 25px #ffff00; }
-    100% { transform: scale(1); box-shadow: 0 0 0 3px #ffff00, 0 0 15px #ffff00; }
-}
-/* Inactivo */
-.selector-border {
-    position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px;
-    border: 3px solid #000; z-index: 101; pointer-events: none; 
-}
-/* Activo */
-.char-icon.active .selector-border {
-    border-color: #ffff00; animation: sharpPulse 0.8s infinite ease-in-out alternate;
-}
+/* SELECTOR ANIMADO */
+@keyframes sharpPulse { 0% { transform: scale(1); box-shadow: 0 0 0 3px #ffff00, 0 0 15px #ffff00; } 50% { transform: scale(1.05); box-shadow: 0 0 0 3px #ffff00, 0 0 25px #ffff00; } 100% { transform: scale(1); box-shadow: 0 0 0 3px #ffff00, 0 0 15px #ffff00; } }
+.selector-border { position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; border: 3px solid #000; z-index: 101; pointer-events: none; }
+.char-icon.active .selector-border { border-color: #ffff00; animation: sharpPulse 0.8s infinite ease-in-out alternate; }
 .row-moving .selector-border { opacity: 0; animation: none; }
-
-/* INDICADOR */
-.transform-indicator {
-    position: absolute; bottom: 0; right: 0; width: 0; height: 0;
-    border-style: solid; border-width: 0 0 1.2vh 1.2vh; 
-    border-color: transparent transparent #ffff00 transparent; z-index: 102; 
-}
+.transform-indicator { position: absolute; bottom: 0; right: 0; border-style: solid; border-width: 0 0 1.2vh 1.2vh; border-color: transparent transparent #ffff00 transparent; z-index: 102; }
 
 /* --- MAIN CONTENT --- */
-.main-content {
-    flex-grow: 1; display: flex; position: relative; padding: 0 3%; align-items: center; overflow: hidden; 
-}
+.main-content { flex-grow: 1; display: flex; position: relative; padding: 0 3%; align-items: center; overflow: hidden; }
 
-/* PANEL IZQUIERDO */
 .left-panel { width: 55%; height: 100%; position: relative; z-index: 5; }
 
-/* ÁREA DE RENDER (PANTALLA COMPLETA DETRÁS) */
+/* ÁREA DEL RENDER */
 .render-area { 
     position: absolute; 
     top: 0; 
     left: 0; 
-    width: 100%; 
-    height: 100%; /* Pantalla completa */
-    
-    display: flex; justify-content: center; align-items: flex-end; 
-    pointer-events: none; 
-    z-index: 1; /* Detrás de la UI */
-}
-
-/* IMAGEN DEL PERSONAJE (AJUSTE 100%) */
-#main-render {
-    /* AJUSTE FINAL: 100%. Altura exacta de la pantalla. */
+    width: 55%; 
     height: 100%; 
-    
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-end; 
+    pointer-events: none; 
+    z-index: 1; 
+}
+#main-render { 
+    height: 100%; 
     width: auto; 
     max-width: 160%; 
-    
-    object-fit: contain; object-position: bottom center; 
+    object-fit: contain; 
+    object-position: bottom center; 
     filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.8)); 
     transition: opacity 0.2s ease-out, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    transform-origin: bottom center;
+    transform-origin: bottom center; 
 }
 
 /* PLACAS DE NOMBRE */
-.name-plate-wrapper { 
-    position: absolute; bottom: 5%; left: 0; width: 100%; 
-    display: flex; flex-direction: column; align-items: center; gap: 0.5vh; 
-    z-index: 50; 
-}
-.name-plate {
-    position: relative; background: linear-gradient(180deg, #3355aa 0%, #001133 100%);
-    border: 2px solid #55aaff; border-radius: 4px; display: flex; justify-content: center; align-items: center; 
-    transform: skewX(-20deg); box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-}
+.name-plate-wrapper { position: absolute; bottom: 5%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.5vh; z-index: 50; }
+.name-plate { position: relative; background: linear-gradient(180deg, #3355aa 0%, #001133 100%); border: 2px solid #55aaff; border-radius: 4px; display: flex; justify-content: center; align-items: center; transform: skewX(-20deg); box-shadow: 5px 5px 10px rgba(0,0,0,0.5); }
 .main-plate { width: 85%; height: 6.5vh; z-index: 2; }
 .sub-plate { width: 85%; height: 4.5vh; background: linear-gradient(180deg, #333 0%, #111 100%); border-color: #555; z-index: 1; }
-.plate-text {
-    color: #fff; font-weight: 900; font-style: italic; text-shadow: 2px 2px 0 #000; 
-    transform: skewX(20deg); letter-spacing: 2px; white-space: nowrap;
-}
+.plate-text { color: #fff; font-weight: 900; font-style: italic; text-shadow: 2px 2px 0 #000; transform: skewX(20deg); letter-spacing: 2px; white-space: nowrap; }
 .main-plate .plate-text { font-size: 3.5vh; }
 .sub-plate .plate-text { font-size: 2.5vh; color: #ddd; }
 .plate-glass { position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent); }
 
 /* PANEL DERECHO */
 .right-panel {
-    width: 45%; background: rgba(0, 10, 30, 0.9); margin-left: 2%; padding: 2.5vh;
-    display: flex; flex-direction: column; gap: 1.5vh; position: relative;
-    border: 2px solid #0055aa; box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-    clip-path: polygon(2vh 0, 100% 0, 100% calc(100% - 2vh), calc(100% - 2vh) 100%, 0 100%, 0 2vh); z-index: 40; 
+    width: 45%; background: rgba(0, 10, 30, 0.9); margin-left: auto; padding: 2.5vh; display: flex; flex-direction: column; gap: 1.5vh; position: relative;
+    border: 2px solid #0055aa; box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); clip-path: polygon(2vh 0, 100% 0, 100% calc(100% - 2vh), calc(100% - 2vh) 100%, 0 100%, 0 2vh); z-index: 40; 
 }
 .right-panel::before { content: ""; position: absolute; inset: 4px; border: 1px solid rgba(255, 255, 255, 0.1); pointer-events: none; }
 .info-header { background: linear-gradient(90deg, transparent, #003366, transparent); color: #00ccff; padding: 0.5vh; text-align: center; font-weight: bold; border-bottom: 2px solid #00aaff; font-size: 2.2vh; text-transform: uppercase; }
@@ -224,14 +155,53 @@ body {
 .stat-bar-bg { flex-grow: 1; height: 1.5vh; background: #000; border: 1px solid #333; transform: skewX(-20deg); overflow: hidden; }
 .stat-bar-fill { height: 100%; background: linear-gradient(180deg, #00ffff, #0055aa); width: 0%; transition: width 0.3s ease-out; }
 .bio-box { color: #ccc; font-size: 1.8vh; line-height: 1.4; border-top: 1px dashed #004488; padding-top: 1vh; min-height: 8vh; text-shadow: 1px 1px 0 #000; }
-.forms-list-container { background: rgba(0,0,0,0.5); padding: 1vh; border: 1px solid #003366; flex-grow: 1; }
 .info-sub-header { color: #00ccff; font-size: 1.5vh; margin-bottom: 0.5vh; text-transform: uppercase; }
-.forms-list { list-style: none; color: #fff; font-size: 1.6vh; opacity: 0.9; padding-left: 0.5vh; }
-.forms-list li { padding: 0.2vh 0; }
-.forms-list li::before { content: "► "; color: #ffff00; font-size: 1.2vh; margin-right: 0.5vh; }
 .helper-text { color: #00ccff; font-weight: bold; letter-spacing: 2px; font-size: 2vh; text-shadow: 1px 1px 0 #000; }
 
-/* --- ANIMACIONES CSS --- */
+/* TRANSFORMACIONES VISUALES */
+.forms-list-container { background: rgba(0,0,0,0.5); padding: 1.5vh; border: 1px solid #003366; flex-grow: 1; }
+
+#forms-list {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vh;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+.trans-icon-mini {
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    border: 2px solid #555;
+    background: #000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.trans-icon-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    opacity: 0.6; 
+    transition: opacity 0.3s ease;
+}
+
+.trans-icon-mini.active-trans {
+    border-color: #ffff00;
+    box-shadow: 0 0 10px #ffff00, 0 0 20px rgba(255, 255, 0, 0.4);
+    transform: scale(1.15);
+}
+
+.trans-icon-mini.active-trans img {
+    opacity: 1; 
+}
+
+/* ANIMACIONES CSS */
 @keyframes iconPopIn { 0% { opacity: 0; transform: scale(0.5); } 60% { opacity: 1; transform: scale(1.15); } 100% { opacity: 1; transform: scale(1); } }
 .icon-entering { animation: iconPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards; }
 @keyframes iconPopOut { 0% { opacity: 1; transform: scale(1); } 40% { opacity: 1; transform: scale(1.15); } 100% { opacity: 0; transform: scale(0.5); } }

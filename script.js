@@ -10,27 +10,37 @@ let transIndex = 0;
 
 let isEnteringTransformations = false;
 let isTransitioning = false; 
+let musicStarted = false; 
 
-// --- SISTEMA DE AUDIO (ARCHIVOS .WAV) ---
+// --- SISTEMA DE AUDIO (ARCHIVOS .WAV / .MP3) ---
 const sfxMove = new Audio('audio/move.wav');     
-const sfxRow = new Audio('audio/row.wav');       
+const sfxRowUp = new Audio('audio/row_up.wav');     
+const sfxRowDown = new Audio('audio/row_down.wav'); 
 const sfxSelect = new Audio('audio/select.wav'); 
 const sfxCancel = new Audio('audio/cancel.wav'); 
+const sfxTransform = new Audio('audio/transform.wav'); 
+const bgMusic = new Audio('audio/bgm.mp3'); 
 
-// --- AJUSTE DE VOLUMEN (Más bajo) ---
-// Rango: 0.0 (Mute) a 1.0 (Máximo)
-sfxMove.volume = 0.02;    // Antes 0.5 (Movimiento lateral)
-sfxRow.volume = 0.02;     // Antes 0.5 (Cambio de fila)
-sfxSelect.volume = 0.03;  // Antes 0.8 (Confirmar - un poco más alto para destacar)
-sfxCancel.volume = 0.02;  // Antes 0.6 (Cancelar)
+/// Ajuste de volumen
+sfxMove.volume = 1;    
+sfxRowUp.volume = 1;     
+sfxRowDown.volume = 0.03;     
+sfxSelect.volume = 1;  
+sfxCancel.volume = 0.03;  
+sfxTransform.volume = 0.03; 
+
+// Configuración de la música de fondo
+bgMusic.volume = 0.04;       
 
 function playSound(type) {
     let sound;
     switch (type) {
         case 'move': sound = sfxMove; break;
-        case 'row': sound = sfxRow; break;
+        case 'row_up': sound = sfxRowUp; break;
+        case 'row_down': sound = sfxRowDown; break;
         case 'select': sound = sfxSelect; break;
         case 'cancel': sound = sfxCancel; break;
+        case 'transform': sound = sfxTransform; break;
         default: return;
     }
     
@@ -165,7 +175,12 @@ function changeRow(direction) {
     if (isTransitioning) return;
     isTransitioning = true;
     
-    playSound('row'); 
+    // Reproduce el sonido correcto según si vas arriba o abajo
+    if (direction === 1) { 
+        playSound('row_down'); 
+    } else { 
+        playSound('row_up'); 
+    }
 
     strip.classList.add('row-moving');
     const outClass = direction === 1 ? 'slide-out-up' : 'slide-out-down';
@@ -253,24 +268,36 @@ function updateInfo(data) {
     }
 
     bioText.innerText = data.bio || "Información no disponible.";
-    updateFormsList(data.form || "Normal");
+    
+   
+    updateFormsList(data);
 }
 
-function updateFormsList(currentFormName) {
-    formsList.innerHTML = '';
-    const baseChar = characterGrid[rowIndex][charIndex];
-    const baseEntry = { form: baseChar.form || "Normal" };
-    const allForms = [baseEntry, ...(baseChar.transformations || [])];
+// --- LISTA DE TRANSFORMACIONES CON IMÁGENES ---
+function updateFormsList(activeData) {
+    formsList.innerHTML = ''; 
 
-    allForms.forEach(item => {
-        const li = document.createElement('li');
-        const displayText = item.form || item.name || "Normal";
-        li.innerText = displayText;
-        if (displayText.toUpperCase() === currentFormName.toUpperCase()) {
-            li.style.color = "#ffff00";
-            li.style.textShadow = "0 0 5px #ffff00";
+    const baseChar = characterGrid[rowIndex][charIndex];
+    const transformationsOnly = baseChar.transformations || [];
+
+    if (transformationsOnly.length === 0) return;
+
+    transformationsOnly.forEach(item => {
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'trans-icon-mini';
+        
+        const img = document.createElement('img');
+        img.src = item.portrait;
+        img.alt = item.form || "Transformación";
+        
+        iconDiv.appendChild(img);
+
+       
+        if (activeData && item.id === activeData.id) {
+            iconDiv.classList.add('active-trans');
         }
-        formsList.appendChild(li);
+
+        formsList.appendChild(iconDiv);
     });
 }
 
@@ -285,6 +312,12 @@ function updateHelper() {
 
 // --- INPUTS ---
 document.addEventListener('keydown', (e) => {
+  
+    if (!musicStarted) {
+        bgMusic.play().catch(err => console.log("El navegador bloqueó el audio inicial.", err));
+        musicStarted = true;
+    }
+
     if (characterGrid.length === 0 || isTransitioning) return;
 
     // DERECHA
@@ -321,8 +354,9 @@ document.addEventListener('keydown', (e) => {
     else if (e.key === 'Enter' || e.key.toLowerCase() === 'z') {
         if (currentState === STATE_CHARACTERS) {
             const char = characterGrid[rowIndex][charIndex];
+            
             if (char.transformations && char.transformations.length > 0) {
-                playSound('select');
+                playSound('transform'); 
                 currentState = STATE_TRANSFORMATIONS;
                 transIndex = 0;
                 isEnteringTransformations = true;
@@ -350,7 +384,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 function confirmSelection(name, form) {
-    playSound('select');
+    playSound('select'); 
     
     nameMain.style.color = "#ffff00";
     nameMain.style.textShadow = "0 0 20px #ff0000"; 
