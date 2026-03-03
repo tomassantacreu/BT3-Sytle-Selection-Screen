@@ -31,6 +31,13 @@ sfxTransform.volume = 0.03;
 
 // Configuración de la música de fondo
 bgMusic.volume = 0.04;       
+bgMusic.loop = true; 
+
+// Respaldo a prueba de fallos para el bucle (Loop forzado)
+bgMusic.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play().catch(e => console.log("Error al repetir la música:", e));
+});
 
 function playSound(type) {
     let sound;
@@ -45,7 +52,7 @@ function playSound(type) {
     }
     
     sound.currentTime = 0;
-    sound.play().catch(e => console.warn("Audio bloqueado o archivo no encontrado:", e));
+    sound.play().catch(e => console.warn("Audio bloqueado:", e));
 }
 
 // --- REFERENCIAS AL DOM ---
@@ -89,6 +96,38 @@ function createParticles() {
     }
 }
 
+// --- NUEVO: SISTEMA DE PRECARGA DE IMÁGENES ---
+const preloadedImages = []; 
+
+function preloadAllImages() {
+    console.log("Iniciando precarga de imágenes...");
+    
+    characterGrid.forEach(row => {
+        row.forEach(char => {
+            // Precargar personaje base
+            if (char.portrait) { 
+                let pImg = new Image(); pImg.src = char.portrait; preloadedImages.push(pImg); 
+            }
+            if (char.render) { 
+                let rImg = new Image(); rImg.src = char.render; preloadedImages.push(rImg); 
+            }
+
+            // Precargar todas sus transformaciones
+            if (char.transformations) {
+                char.transformations.forEach(trans => {
+                    if (trans.portrait) { 
+                        let tpImg = new Image(); tpImg.src = trans.portrait; preloadedImages.push(tpImg); 
+                    }
+                    if (trans.render) { 
+                        let trImg = new Image(); trImg.src = trans.render; preloadedImages.push(trImg); 
+                    }
+                });
+            }
+        });
+    });
+    console.log("¡Precarga de imágenes finalizada!");
+}
+
 // --- INICIALIZACIÓN ---
 async function initGame() {
     createParticles();
@@ -99,11 +138,14 @@ async function initGame() {
         if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
         characterGrid = await response.json();
         
+        
+        preloadAllImages();
+        
         renderBar();
         updateHelper();
     } catch (error) {
         console.error(error);
-        helperText.innerText = "ERROR JSON: Abre esto con Live Server";
+        helperText.innerText = "ERROR JSON: Revisa la consola o el nombre del archivo";
         helperText.style.color = "red";
     }
 }
@@ -175,7 +217,6 @@ function changeRow(direction) {
     if (isTransitioning) return;
     isTransitioning = true;
     
-    // Reproduce el sonido correcto según si vas arriba o abajo
     if (direction === 1) { 
         playSound('row_down'); 
     } else { 
@@ -269,7 +310,6 @@ function updateInfo(data) {
 
     bioText.innerText = data.bio || "Información no disponible.";
     
-   
     updateFormsList(data);
 }
 
@@ -292,7 +332,6 @@ function updateFormsList(activeData) {
         
         iconDiv.appendChild(img);
 
-       
         if (activeData && item.id === activeData.id) {
             iconDiv.classList.add('active-trans');
         }
@@ -312,9 +351,9 @@ function updateHelper() {
 
 // --- INPUTS ---
 document.addEventListener('keydown', (e) => {
-  
+   
     if (!musicStarted) {
-        bgMusic.play().catch(err => console.log("El navegador bloqueó el audio inicial.", err));
+        bgMusic.play().catch(err => console.log("Audio inicial bloqueado.", err));
         musicStarted = true;
     }
 
