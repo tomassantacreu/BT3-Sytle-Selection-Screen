@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
+    <div id="intro-screen" class="intro-screen">
+        <div class="logo-text">DRAGON BALL: Sparking! ZERO</div>
+        <div class="dragonballs-container">
+            <div class="db db-1"><span>★</span></div>
+            <div class="db db-2"><span>★</span><span>★</span></div>
+            <div class="db db-3"><span>★</span><span>★</span><span>★</span></div>
+            <div class="db db-4"><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="db db-5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="db db-6"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="db db-7"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        </div>
+        <div id="loading-status" class="loading-status">REUNIENDO LAS ESFERAS...</div>
+    </div>
+
     <div class="tv-screen">
         <div class="game-bg">
             <div class="bg-gradient"></div>
@@ -16,19 +31,16 @@
         </div>
 
         <div class="ui-layer">
-            
             <div class="hud-bar top-bar">
                 <div class="player-badge">
-                    <img src="images/4stars.png" alt="Logo" class="p-logo">
+                    <img src="images/logo.svg" alt="Logo" class="p-logo">
                 </div>
                 <div class="rail-wrapper">
-                    <div id="p1-strip" class="icon-strip">
-                        </div>
+                    <div id="p1-strip" class="icon-strip"></div>
                 </div>
             </div>
 
             <div class="main-content">
-                
                 <div class="render-area">
                     <img id="main-render" src="" alt="">
                 </div>
@@ -60,8 +72,7 @@
 
                     <div class="forms-list-container">
                         <div class="info-sub-header">FORMAS / TRANSF.</div>
-                        <div id="forms-list">
-                            </div>
+                        <div id="forms-list"></div>
                     </div>
                 </div>
             </div>
@@ -69,7 +80,6 @@
             <div class="hud-bar bottom-bar">
                 <span id="helper-text" class="helper-text">...</span>
             </div>
-
         </div>
     </div>
     <script src="script.js"></script>
